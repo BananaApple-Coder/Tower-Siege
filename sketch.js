@@ -23,7 +23,6 @@ function setup() {
  
   //level one
   block1 = new Block(300,275,30,40);
-  console.log(block1);
   block2 = new Block(330,275,30,40);
   block3 = new Block(360,275,30,40);
   block4 = new Block(390,275,30,40);
@@ -43,7 +42,28 @@ function setup() {
   //top
   block16 = new Block(390,155,30,40);
 
+  Ablock1 = new Block(300+310,275-100,30,40);
+  Ablock2 = new Block(330+310,275-100,30,40);
+  Ablock3 = new Block(360+310,275-100,30,40);
+  Ablock4 = new Block(390+310,275-100,30,40);
+  Ablock5 = new Block(420+310,275-100,30,40);
+  Ablock6 = new Block(450+310,275-100,30,40);
+  Ablock7 = new Block(480+310,275-100,30,40);
+  //level two
+  Ablock8 = new Block(330+310,235-100,30,40);
+  Ablock9 = new Block(360+310,235-100,30,40);
+  Ablock10 = new Block(390+310,235-100,30,40);
+  Ablock11 = new Block(420+310,235-100,30,40);
+  Ablock12 = new Block(450+310,235-100,30,40);
+  //level three
+  Ablock13 = new Block(360+310,195-100,30,40);
+  Ablock14 = new Block(390+310,195-100,30,40);
+  Ablock15 = new Block(420+310,195-100,30,40);
+  //top
+  Ablock16 = new Block(390+310,155-100,30,40);
 
+object = new obj(100, 200, 15)
+slingshot = new sling(object.body, {x:100,y:200})
   
 
 }
@@ -56,6 +76,7 @@ function draw() {
 
   ground.display();
   stand1.display();
+  stand2.display();
   
   strokeWeight(2);
   stroke(15);
@@ -79,6 +100,44 @@ function draw() {
   block15.display();
   fill("grey");
   block16.display();
- 
 
+  fill("skyblue");
+  Ablock1.display();
+  Ablock2.display();
+  Ablock3.display();
+  Ablock4.display();
+  Ablock5.display();
+  Ablock6.display();
+  Ablock7.display();
+  fill("pink");
+  Ablock8.display();
+  Ablock9.display();
+  Ablock10.display();
+  Ablock11.display();
+  Ablock12.display();
+  fill("turquoise");
+  Ablock13.display();
+  Ablock14.display();
+  Ablock15.display();
+  fill("grey");
+  Ablock16.display();
+ 
+  object.display()
+
+  slingshot.display()
+}
+
+function mouseDragged(){
+  Matter.Body.setPosition(object.body, {x:mouseX, y:mouseY})
+}
+
+function mouseReleased(){
+  slingshot.destroy()
+}
+
+function keyPressed(){
+  if(keyCode === 32){
+      slingshot.attach(object.body);
+      Matter.Body.setPosition(object.body, {x:100, y:200})
+  }
 }
